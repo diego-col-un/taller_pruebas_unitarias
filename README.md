@@ -1,5 +1,4 @@
 # 🎯 PROYECTO: PRUEBAS UNITARIAS - CÓDIGO PARA ESTUDIANTES
-## Listo para subir a Git
 
 ---
 
@@ -24,8 +23,7 @@ proyecto-pruebas-unitarias/
 │   ├── test_descuentos.py
 │   └── test_utils.py
 ├── README.md
-├── requirements.txt
-└── setup.sh
+└── requirements.txt
 ```
 
 ---
@@ -34,8 +32,8 @@ proyecto-pruebas-unitarias/
 
 ### Paso 1: Clonar el repositorio
 ```bash
-git clone <URL_DEL_REPOSITORIO>
-cd proyecto-pruebas-unitarias
+git clone https://github.com/cesarpalacios/pruebas_unitarias_devops.git
+cd pruebas_unitarias_devops
 ```
 
 ### Paso 2: Crear entorno virtual
@@ -59,19 +57,12 @@ pytest
 pytest --cov=src --cov-report=html
 ```
 
-### Paso 6: Enviar sus pruebas
-```bash
-git add tests/
-git commit -m "Mis pruebas unitarias"
-git push
-```
-
 ---
 
 ## 🎮 DESAFÍOS PARA ESTUDIANTES
 
 ### Desafío 1: El Detective de Bugs
-Hay **5 bugs ocultos** en los archivos de `src/`. Escriban pruebas para encontrarlos.
+Hay **8 bugs ocultos** en los archivos de `src/`. Escriban pruebas para encontrarlos y corregirlos.
 
 ### Desafío 2: El Arquitecto de Pruebas
 Cada prueba debe seguir la estructura AAA (Arrange, Act, Assert).
@@ -84,13 +75,13 @@ Logren una cobertura del 100% en todos los archivos.
 
 ---
 
-## 🏆 PUNTUACIÓN
+## 🏆 OBJETIVO FINAL
 
-- 1 punto por cada prueba válida
-- 2 puntos por cada caso límite encontrado
-- 3 puntos por cada bug encontrado
-- 5 puntos por archivo con 100% de cobertura
-- 10 puntos por nombre de prueba descriptivo
+El ejercicio termina cuando:
+
+1. **Todas las pruebas estén en estado PASSED**
+2. **Todos los bugs encontrados hayan sido corregidos**
+3. **Se haya alcanzado el 100% de cobertura en los archivos principales**
 
 ---
 
@@ -124,12 +115,13 @@ def test_sumar_positivos():
 3. Casos normales, límites y errores
 4. Organización clara
 5. Comentarios cuando sea necesario
+6. Revise el informe de errores y corrija los bugs encontrados
 
 ---
 
 ## 🚀 LISTO PARA EMPEZAR
 
-¡Comiencen a escribir pruebas y encuentren los bugs ocultos!
+¡Comiencen a escribir pruebas, encuentren los bugs ocultos y corrijan el código hasta que todas las pruebas pasen!
 
 ---
 
