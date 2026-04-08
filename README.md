@@ -1,4 +1,4 @@
-# 🎯 PROYECTO: PRUEBAS UNITARIAS - CÓDIGO PARA ESTUDIANTES
+# 🎯 PROYECTO: PRUEBAS UNITARIAS - CÓDIGO
 
 ---
 
@@ -36,7 +36,7 @@ proyecto-pruebas-unitarias/
 
 ---
 
-## 📋 INSTRUCCIONES PARA ESTUDIANTES
+## 📋 INSTRUCCIONES 
 
 ### Paso 1: Clonar el repositorio
 ```bash
@@ -67,7 +67,7 @@ pytest --cov=src --cov-report=html
 
 ---
 
-## 🎮 DESAFÍOS PARA ESTUDIANTES
+## 🎮 DESAFÍOS
 
 ### Desafío 1: El Detective de Bugs
 Hay **14 bugs ocultos** en los archivos de `src/`. Escriban pruebas para encontrarlos y corregirlos.
