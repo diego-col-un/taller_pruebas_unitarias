@@ -8,12 +8,16 @@
 proyecto-pruebas-unitarias/
 ├── src/
 │   ├── __init__.py
-│   ├── calculadora.py
-│   ├── validador.py
-│   ├── procesador_texto.py
-│   ├── fibonacci.py
-│   ├── descuentos.py
-│   └── utils.py
+│   ├── calculadora.py              # Operaciones matemáticas básicas
+│   ├── validador.py                # Validación de datos
+│   ├── procesador_texto.py         # Procesamiento de texto
+│   ├── fibonacci.py                # Algoritmo de Fibonacci
+│   ├── descuentos.py               # Cálculo de descuentos
+│   ├── utils.py                    # Funciones utilitarias
+│   ├── autenticacion.py            # Autenticación y seguridad
+│   ├── conversor.py                # Conversión de unidades
+│   ├── csv_parser.py               # Parsing de archivos CSV
+│   └── manipulador_texto.py        # Manipulación de cadenas
 ├── tests/
 │   ├── __init__.py
 │   ├── test_calculadora.py
@@ -21,7 +25,11 @@ proyecto-pruebas-unitarias/
 │   ├── test_procesador_texto.py
 │   ├── test_fibonacci.py
 │   ├── test_descuentos.py
-│   └── test_utils.py
+│   ├── test_utils.py
+│   ├── test_autenticacion.py
+│   ├── test_conversor.py
+│   ├── test_csv_parser.py
+│   └── test_manipulador_texto.py
 ├── README.md
 └── requirements.txt
 ```
@@ -62,7 +70,18 @@ pytest --cov=src --cov-report=html
 ## 🎮 DESAFÍOS PARA ESTUDIANTES
 
 ### Desafío 1: El Detective de Bugs
-Hay **8 bugs ocultos** en los archivos de `src/`. Escriban pruebas para encontrarlos y corregirlos.
+Hay **14 bugs ocultos** en los archivos de `src/`. Escriban pruebas para encontrarlos y corregirlos.
+
+- `calculadora.py`: 2 bugs
+- `validador.py`: 1 bug
+- `procesador_texto.py`: 1 bug
+- `fibonacci.py`: 1 bug
+- `descuentos.py`: 2 bugs
+- `utils.py`: 1 bug
+- `autenticacion.py`: 2 bugs
+- `conversor.py`: 2 bugs
+- `csv_parser.py`: 2 bugs
+- `manipulador_texto.py`: 2 bugs
 
 ### Desafío 2: El Arquitecto de Pruebas
 Cada prueba debe seguir la estructura AAA (Arrange, Act, Assert).
@@ -80,7 +99,7 @@ Logren una cobertura del 100% en todos los archivos.
 El ejercicio termina cuando:
 
 1. **Todas las pruebas estén en estado PASSED**
-2. **Todos los bugs encontrados hayan sido corregidos**
+2. **Todos los 14 bugs hayan sido encontrados y corregidos**
 3. **Se haya alcanzado el 100% de cobertura en los archivos principales**
 
 ---
@@ -116,12 +135,13 @@ def test_sumar_positivos():
 4. Organización clara
 5. Comentarios cuando sea necesario
 6. Revise el informe de errores y corrija los bugs encontrados
+7. Empiecen con módulos más simples y avancen a los más complejos
 
 ---
 
 ## 🚀 LISTO PARA EMPEZAR
 
-¡Comiencen a escribir pruebas, encuentren los bugs ocultos y corrijan el código hasta que todas las pruebas pasen!
+¡Comiencen a escribir pruebas, encuentren los 14 bugs ocultos y corrijan el código hasta que todas las pruebas pasen!
 
 ---
 
