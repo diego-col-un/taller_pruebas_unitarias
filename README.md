@@ -79,6 +79,13 @@ pytest --cov=src --cov-report=term-missing
 
 ---
 
+### Paso 6: Ver reporte de cobertura html 
+```bash
+pytest --cov=src --cov-report=html
+```
+
+---
+
 ## 🧠 EJEMPLO DE TEST (patrón AAA)
 
 ```python
