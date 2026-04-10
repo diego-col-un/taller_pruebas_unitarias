@@ -1,4 +1,3 @@
----
 
 ## ✅ RESULTADOS OBTENIDOS
 
