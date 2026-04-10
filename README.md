@@ -3,7 +3,7 @@
 
 | Métrica | Resultado |
 |---|---|
-| Tests en estado PASSED | ✅ 40 / 40 |
+| Tests en estado PASSED | ✅ 84 / 84 |
 | Bugs encontrados y corregidos | ✅ 14 / 14 |
 | Cobertura de código | ✅ 100% |
 
