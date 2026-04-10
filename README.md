@@ -23,27 +23,6 @@
 | `autenticacion.py` | 100% | ✅ 100% |
 | **TOTAL** | **83%** | **✅ 100%** |
 
----
-
-## 🐛 BUGS CORREGIDOS
-
-| Archivo | Bug |
-|---|---|
-| `calculadora.py` | `raiz_cuadrada()` no validaba números negativos |
-| `calculadora.py` | `minimo()` inicializaba `min_val = 0` en lugar de `lista[0]` |
-| `conversor.py` | `kelvin_a_celsius()` no validaba Kelvin negativo |
-| `conversor.py` | `kilometros_a_millas()` multiplicaba en vez de dividir por `1.60934` |
-| `csv_parser.py` | `parse_csv_line()` no manejaba campos entre comillas |
-| `csv_parser.py` | `csv_a_diccionarios()` no validaba filas con columnas desiguales |
-| `descuentos.py` | `calcular_precio_final()` aplicaba el impuesto sobre precio original en vez del descontado |
-| `descuentos.py` | `descuento_apilado()` permitía suma de descuentos > 100% → precio negativo |
-| `fibonacci.py` | `fibonacci_recursivo()` no tenía memoización → complejidad O(2^n) |
-| `manipulador_texto.py` | `es_palindromo()` no ignoraba signos de puntuación ni mayúsculas |
-| `manipulador_texto.py` | `dividir_en_palabras()` generaba strings vacíos con espacios múltiples |
-| `procesador_texto.py` | `es_palindromo()` no normalizaba correctamente espacios y mayúsculas |
-
----
-
 ## 🚀 INSTRUCCIONES DE USO
 
 ### Paso 1: Clonar el repositorio
