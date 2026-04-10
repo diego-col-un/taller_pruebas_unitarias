@@ -4,6 +4,7 @@ ATENCIÓN: Hay 1 bug oculto en este archivo.
 """
 
 import re
+from datetime import date
 
 def validar_email(email):
     """Valida si un email tiene formato correcto."""
@@ -87,21 +88,19 @@ def validar_url(url):
     return re.match(patron, url) is not None
 
 def validar_fecha(dia, mes, año):
-    """Valida si una fecha es correcta."""
+    """Valida si una fecha es correcta (Arreglado: valida días por mes y bisiestos)."""
     if not all(isinstance(x, int) for x in [dia, mes, año]):
         return False
 
-    # BUG: No valida correctamente el mes y día
-    if mes < 1 or mes > 12:
+    # CORRECCIÓN DEL BUG: Usar la librería nativa para validar la existencia real de la fecha
+    try:
+        if año < 1900 or año > 2100: # Mantenemos el límite de negocio
+            return False
+        date(año, mes, dia)
+        return True
+    except ValueError:
+        # Esto atrapará casos como 31 de abril o 29 de febrero en años no bisiestos
         return False
-
-    if dia < 1 or dia > 31:
-        return False
-
-    if año < 1900 or año > 2100:
-        return False
-
-    return True
 
 def validar_cedula(cedula):
     """Valida si una cédula colombiana tiene formato básico."""

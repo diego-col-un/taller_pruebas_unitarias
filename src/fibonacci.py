@@ -1,3 +1,4 @@
+from functools import lru_cache
 """
 Módulo con el algoritmo de Fibonacci.
 ATENCIÓN: Hay 1 bug oculto en este archivo.
@@ -20,6 +21,7 @@ def fibonacci_iterativo(n):
 
     return b
 
+@lru_cache(maxsize=None) # CORRECCIÓN BUG: Añadimos memoización
 def fibonacci_recursivo(n):
     """Calcula el n-ésimo número de Fibonacci de forma recursiva."""
     if n < 0:

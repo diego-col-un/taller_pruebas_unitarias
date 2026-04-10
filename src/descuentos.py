@@ -26,21 +26,17 @@ def calcular_descuento(precio, porcentaje):
 
 def calcular_precio_final(precio, impuesto, descuento):
     """Calcula el precio final con impuesto y descuento."""
-    if precio < 0:
-        raise ValueError("El precio no puede ser negativo")
-
-    if impuesto < 0:
-        raise ValueError("El impuesto no puede ser negativo")
-
+    if precio < 0 or impuesto < 0:
+        raise ValueError("Valores negativos no permitidos")
     if descuento < 0 or descuento > 100:
         raise ValueError("El descuento debe estar entre 0 y 100")
 
     # Primero aplicar el descuento
     precio_con_descuento = aplicar_descuento(precio, descuento)
 
-    # Luego aplicar el impuesto
-    # BUG 1: El impuesto se aplica incorrectamente
-    impuesto_monto = precio * (impuesto / 100)
+    # CORRECCIÓN BUG 1: El impuesto debe calcularse sobre el precio CON descuento, 
+    # no sobre el precio original (o viceversa según la ley, pero aquí el bug es la inconsistencia).
+    impuesto_monto = precio_con_descuento * (impuesto / 100)
     precio_final = precio_con_descuento + impuesto_monto
 
     return precio_final
@@ -90,12 +86,14 @@ def descuento_apilado(precio, descuentos):
     """Aplica múltiples descuentos de forma apilada (sumando porcentajes)."""
     if precio < 0:
         raise ValueError("El precio no puede ser negativo")
-
     if not descuentos:
         return precio
 
-    # Sumar todos los descuentos
     total_descuento = sum(descuentos)
 
-    # BUG 2: El descuento total puede exceder el 100%
+    # CORRECCIÓN BUG 2: Validar que la suma no exceda el 100% 
+    # para evitar que el precio final sea negativo.
+    if total_descuento > 100:
+        total_descuento = 100
+
     return aplicar_descuento(precio, total_descuento)

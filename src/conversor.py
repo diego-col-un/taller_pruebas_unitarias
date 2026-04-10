@@ -17,7 +17,9 @@ def celsius_a_kelvin(celsius):
 
 def kelvin_a_celsius(kelvin):
     """Convierte Kelvin a Celsius."""
-    # BUG 1: No valida que Kelvin sea >= 0 (absoluto)
+    # CORRECCIÓN BUG 1: El cero absoluto es 0 Kelvin. No existe nada por debajo.
+    if kelvin < 0:
+        raise ValueError("La temperatura en Kelvin no puede ser inferior a cero absoluto")
     return kelvin - 273.15
 
 def metros_a_kilometros(metros):
@@ -66,8 +68,9 @@ def kilometros_a_millas(kilometros):
     """Convierte kilómetros a millas."""
     if kilometros < 0:
         raise ValueError("La distancia no puede ser negativa")
-    # BUG 2: Fórmula incorrecta (multiplica en lugar de dividir)
-    return kilometros * 1.60934
+    # CORRECCIÓN BUG 2: Para pasar de km a millas se DIVIDE por 1.60934
+    # Antes estaba multiplicando (eso es para millas a km).
+    return kilometros / 1.60934
 
 def pies_a_metros(pies):
     """Convierte pies a metros."""

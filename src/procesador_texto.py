@@ -26,12 +26,19 @@ def invertir_texto(texto):
     return texto[::-1]
 
 def es_palindromo(texto):
-    """Verifica si un texto es palíndromo."""
+    """Verifica si un texto es palíndromo (Arreglado: ignora espacios y mayúsculas)."""
     if not texto:
         return False
 
-    # BUG: No maneja espacios ni mayúsculas
-    return texto == texto[::-1]
+    # CORRECCIÓN DEL BUG FINAL: 
+    # Normalizamos el texto quitando espacios y pasando a minúsculas
+    texto_limpio = texto.lower().replace(" ", "")
+    
+    # Manejo de caso borde: si el texto solo eran espacios
+    if not texto_limpio:
+        return False
+        
+    return texto_limpio == texto_limpio[::-1]
 
 def eliminar_espacios_extra(texto):
     """Elimina espacios extra de un texto."""

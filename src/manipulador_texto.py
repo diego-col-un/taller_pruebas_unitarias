@@ -1,3 +1,4 @@
+import re
 """
 Módulo de manipulación de cadenas y texto.
 ATENCIÓN: Hay 2 bugs ocultos en este archivo.
@@ -38,12 +39,16 @@ def contar_consonantes(cadena):
     return contador
 
 def es_palindromo(cadena):
-    """Verifica si una cadena es palíndromo."""
+    """Verifica si una cadena es palíndromo (ignorando espacios y mayúsculas)."""
     if not cadena:
         return False
 
-    # BUG 1: No maneja espacios ni mayúsculas/minúsculas
-    cadena_limpia = cadena
+    # CORRECCIÓN BUG 1: Convertir a minúsculas y eliminar todo lo que no sea letra/número
+    cadena_limpia = "".join(caracter.lower() for caracter in cadena if caracter.isalnum())
+    
+    if not cadena_limpia: # Por si la cadena solo tenía espacios o símbolos
+        return False
+        
     return cadena_limpia == cadena_limpia[::-1]
 
 def eliminar_duplicados(cadena):
@@ -89,12 +94,13 @@ def reemplazar_subcadena(cadena, vieja, nueva, max_reemplazos=-1):
         return cadena.replace(vieja, nueva, max_reemplazos)
 
 def dividir_en_palabras(cadena):
-    """Divide una cadena en palabras."""
+    """Divide una cadena en palabras manejando múltiples espacios."""
     if not cadena:
         return []
 
-    # BUG 2: No maneja múltiples espacios ni puntuación
-    return cadena.split(' ')
+    # CORRECCIÓN BUG 2: Usar .split() sin argumentos elimina todos los espacios 
+    # en blanco (dobles, triples, tabs) y limpia los extremos.
+    return cadena.split()
 
 def extraer_dominio(email):
     """Extrae el dominio de un email."""

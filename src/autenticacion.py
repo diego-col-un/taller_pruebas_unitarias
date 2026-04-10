@@ -5,10 +5,11 @@ ATENCIÓN: Hay 2 bugs ocultos en este archivo.
 
 import hashlib
 import re
+import secrets
 
 def hash_contraseña(contraseña):
-    """Genera un hash SHA-256 de una contraseña."""
-    # BUG 1: No maneja contraseñas vacías o None
+    if contraseña is None:
+        raise TypeError("La contraseña no puede ser None")
     return hashlib.sha256(contraseña.encode()).hexdigest()
 
 def verificar_contraseña(contraseña, hash_guardado):
@@ -32,10 +33,13 @@ def validar_usuario(usuario):
     return True
 
 def generar_token(usuario, timestamp):
-    """Genera un token simple basado en usuario y timestamp."""
-    # BUG 2: No incluye salt o aleatoriedad, el token es predecible
-    datos = f"{usuario}:{timestamp}"
+    """Genera un token seguro e impredecible basado en usuario, timestamp y un salt aleatorio."""
+    # Arreglo del BUG 2: Añadimos secrets.token_hex para que cada token sea único
+    # incluso si el usuario y el tiempo son los mismos.
+    salt = secrets.token_hex(16) 
+    datos = f"{usuario}:{timestamp}:{salt}"
     return hashlib.md5(datos.encode()).hexdigest()
+
 
 def validar_token(token):
     """Valida si un token tiene formato correcto."""

@@ -7,16 +7,17 @@ import csv
 from io import StringIO
 
 def parse_csv_line(linea):
-    """Parsea una línea de CSV separada por comas."""
+    """Parsea una línea de CSV respetando comillas usando la librería nativa."""
     if not linea:
         return []
-
-    # Manejar comillas
-    if '"' in linea:
-        # BUG 1: No maneja correctamente comillas anidadas o escapadas
-        return linea.split(',')
-
-    return linea.split(',')
+    
+    # CORRECCIÓN BUG 1: Usar csv.reader para manejar correctamente 
+    # comillas y comas internas.
+    lector = csv.reader(StringIO(linea))
+    try:
+        return next(lector)
+    except StopIteration:
+        return []
 
 def leer_csv_como_lista(contenido_csv):
     """Lee el contenido de un CSV y retorna una lista de listas."""
@@ -35,25 +36,25 @@ def csv_a_diccionarios(contenido_csv, tiene_cabecera=True):
     """Convierte contenido CSV a una lista de diccionarios."""
     lineas = leer_csv_como_lista(contenido_csv)
 
-    if not lineas:
+    if not lineas or len(lineas) < 2: # Ajuste para que funcione con 1 sola fila
         return []
 
-    if tiene_cabecera and len(lineas) > 1:
-        cabeceras = lineas[0]
-        datos = lineas[1:]
+    cabeceras = lineas[0]
+    datos = lineas[1:]
 
-        resultado = []
-        for fila in datos:
-            # BUG 2: No maneja filas con diferente número de columnas
-            fila_dict = {}
-            for i, valor in enumerate(fila):
-                if i < len(cabeceras):
-                    fila_dict[cabeceras[i]] = valor
-            resultado.append(fila_dict)
+    resultado = []
+    for fila in datos:
+        # CORRECCIÓN BUG 2: Validar que la fila tenga el mismo número 
+        # de columnas que la cabecera.
+        if len(fila) != len(cabeceras):
+            # Podrías lanzar un error o rellenar con None. 
+            # Aquí lanzaremos ValueError para detectarlo en el test.
+            raise ValueError("Fila malformada: número de columnas no coincide")
+            
+        fila_dict = {cabeceras[i]: fila[i] for i in range(len(cabeceras))}
+        resultado.append(fila_dict)
 
-        return resultado
-
-    return []
+    return resultado
 
 def validar_csv(contenido_csv):
     """Valida si el contenido CSV tiene formato básico correcto."""
