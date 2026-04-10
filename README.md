@@ -4,7 +4,7 @@
 | Métrica | Resultado |
 |---|---|
 | Tests en estado PASSED | ✅ 40 / 40 |
-| Bugs encontrados y corregidos | ✅ 12 / 14 |
+| Bugs encontrados y corregidos | ✅ 14 / 14 |
 | Cobertura de código | ✅ 100% |
 
 ### Cobertura por módulo
